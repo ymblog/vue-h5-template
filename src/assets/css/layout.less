@@ -1,0 +1,44 @@
+/**
+ * 通用布局css
+ */
+/* loading */
+@-webkit-keyframes rotate {0% {-webkit-transform: rotate(0deg) ; transform: rotate(0deg) ; } 50% {-webkit-transform: rotate(180deg); transform: rotate(180deg) ; } 100% {-webkit-transform: rotate(360deg) ; transform: rotate(360deg) ; } } @keyframes rotate {0% {-webkit-transform: rotate(0deg) ; transform: rotate(0deg) ; } 50% {-webkit-transform: rotate(180deg); transform: rotate(180deg); } 100% {-webkit-transform: rotate(360deg) ; transform: rotate(360deg) } }
+.lt-loading{
+    padding:10px 0;
+    text-align:center;
+    i{
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+        border: 2px solid #f95c68;
+        border-bottom-color: transparent;
+        background: transparent;
+        -webkit-animation: rotate 0.75s linear infinite;
+        animation: rotate 0.75s linear infinite;
+    }
+}
+.lt-nodata{
+    color:#b0afb3;
+    font-size:28px;
+    text-align:center;
+    line-height:50px;
+}
+
+/* transition */
+.slide-enter-active, .slide-leave-active,.fade-enter-active, .fade-leave-active,.gotop-enter-active, .gotop-leave-active{
+    -webkit-transition:all .3s;
+    transition:all .3s;
+}
+.slide-enter, .slide-leave-to {
+    transform: translateX(500px);
+    -webkit-transform: translateX(500px);
+    opacity: 0;
+}
+.fade-enter, .slide-leave-to {
+    opacity: 0;
+}
+.gotop-enter, .gotop-leave-to{
+    transform: translateY(110px);
+    -webkit-transform: translateY(110px);
+}
