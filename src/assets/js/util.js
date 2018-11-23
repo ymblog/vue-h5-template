@@ -15,7 +15,7 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(
     config => {
-        config.headers['token'] = store.state.token || common.cookie.get('token'); // 让每个请求携带自定义token 请根据实际情况自行修改
+        config.headers['token'] = store.state.data.token || common.cookie.get(common.cookie.dataName); // 让每个请求携带自定义token 请根据实际情况自行修改
         return config;
     },
     error => {

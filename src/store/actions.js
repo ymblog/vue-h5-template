@@ -7,7 +7,6 @@ import common from '@/assets/js/common';
 const actions = {
     // 登录
     login({ commit }, userInfo) {
-        const username = userInfo.username.trim();
         return new Promise((resolve, reject) => {
             Vue.prototype.$ajax({
                 url: '/login',
@@ -17,13 +16,10 @@ const actions = {
                     password:userInfo.password
                 }
             }).then(response => {
-                const data = response.data;
-                common.cookie.set('token',data.token);
-                common.cookie.set('name',data.name);
-                common.cookie.set('role',data.role);
-                commit('SET_TOKEN', data.token);
-                commit('SET_NAME', data.name);
-                commit('SET_ROLE', data.role);
+                let data = response.data,
+                    info = {token:data.token,name:data.name};
+                common.cookie.set(common.cookie.dataName,JSON.stringify(info));
+                commit('SET_DATA', info);
                 resolve();
             }).catch(error => {
                 reject(error);
@@ -38,11 +34,11 @@ const actions = {
                 url: '/logout',
                 method: 'POST',
                 data: {
-                    token:state.token,
+                    token:state.data.token
                 }
             }).then(() => {
-                commit('SET_TOKEN', '');
-                common.cookie.delete('token');
+                commit('SET_DATA', '');
+                common.cookie.delete(common.cookie.dataName);
                 resolve();
             }).catch(error => {
                 reject(error);   

@@ -4,6 +4,8 @@
  */
 //cookie
 const cookie = {
+    //设置独立的cookie名称
+    dataName:'h5Data',
     set(name, value) {
         if(window.localStorage){
             localStorage.removeItem(name);
