@@ -1,6 +1,6 @@
 <!-- 回到顶部组件 -->
 <template>
-	<i @click="goTop()" v-if="isShowTop" class="icon go-top"></i>
+	<i @click="goTop()" v-show="isShowTop" class="icon go-top"></i>
 </template>
 <script>
 	export default{
@@ -11,7 +11,8 @@
 		},
 		created(){
             window.addEventListener('scroll',() => {
-            	this.isShowTop = document.body.scrollTop > 500 ? true : false;
+            	const doc = document.body.scrollTop? document.body : document.documentElement;
+            	this.isShowTop = doc.scrollTop > 100 ? true : false;
 		    });
 		},
 		methods:{
