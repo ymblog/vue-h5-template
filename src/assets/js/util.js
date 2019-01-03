@@ -19,8 +19,10 @@ service.interceptors.request.use(
         return config;
     },
     error => {
-        console.log(error);
-        Promise.reject(error);
+        Vue.prototype.$toast('登录已失效,请重新登录');
+        store.dispatch('logout').then(() => {
+            location.reload() // 为了重新实例化vue-router对象 避免bug
+        });
     }
 );
 // response 拦截器
@@ -40,14 +42,12 @@ service.interceptors.response.use(
             }else{
                 Vue.prototype.$toast(res.message);
             }
-            return Promise.reject('error');
         } else {
             return res;
         }
     },
     error => {
-        Vue.prototype.$toast(error.message);
-        return Promise.reject(error);
+        Vue.prototype.$toast();
     }
 )
 export default {
