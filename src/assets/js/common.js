@@ -14,7 +14,7 @@ const cookie = {
             var Days = 30;
             var exp = new Date();
             exp.setTime(exp.getTime() + Days * 24 * 60 * 60);
-            document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+            document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+ "; path=/";
         };
     },
     delete(name) {
@@ -24,7 +24,7 @@ const cookie = {
             var exp = new Date();
             exp.setTime(exp.getTime() - 1);
             var cval=getCookie(name);
-            if(cval!=null){document.cookie= name + "="+cval+";expires="+exp.toGMTString();}
+            if(cval!=null){document.cookie= name + "="+cval+";expires="+exp.toGMTString()+ "; path=/";}
         };
     },
     get(name) {
