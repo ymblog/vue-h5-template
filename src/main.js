@@ -29,9 +29,8 @@ Vue.use(vueLazyload, {
 Vue.use(infiniteScroll);
 Vue.use(util);
 new Vue({
-    el: '#app',
-    router,
-    store,
-    components: { App },
-    template: '<App/>'
-})
+  router,
+  store,
+  render: h => h(App)
+}).$mount("#app")
+
