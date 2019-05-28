@@ -5,8 +5,7 @@ function addStyleResource(rule) {
         .loader('style-resources-loader')
         .options({
             patterns: [
-                path.resolve(__dirname, 'src/assets/css/base.less'),
-                path.resolve(__dirname, 'src/assets/css/layout.less')
+                path.resolve(__dirname, 'src/assets/css/extend.less')
             ]
         })
 }

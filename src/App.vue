@@ -15,5 +15,7 @@ export default {
 }
 </script>
 <style lang="less">
+@import "./assets/css/base.less";
+@import "./assets/css/layout.less";
 @import "./assets/css/sprite.less";
 </style>
